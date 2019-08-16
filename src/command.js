@@ -99,7 +99,7 @@ function getSymbols() {
       symbolReferences.forEach(symbolReference => {
         symbolItems.push({
           id: symbolReference.id,
-          name: symbolReference.name,
+          name: library.name + "/" + symbolReference.name,
           reference: symbolReference
         });
       });
@@ -134,7 +134,7 @@ function hideSymbol(symbol) {
       return false; 
     }
   });
-  
+
   return shouldHideSymbol
 }
 
