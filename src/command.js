@@ -112,14 +112,30 @@ function getSymbols() {
 }
 
 function removeSymbols(symbols) {
-  var filteredSymbols = symbols.filter( (symbol) =>  { return hideSymbol(symbol) });
+  var filteredSymbols = symbols.filter( (symbol) =>  { return !hideSymbol(symbol) });
   return filteredSymbols
 }
 
 function hideSymbol(symbol) {
-  var regex = /x\.\snested/g;
-  var symbolName = symbol.name;
-  var shouldHideSymbol = symbolName.match(regex) === null;
+  var regexes = [
+    /x\.\snested/g,
+    /x\.\s/g ];
+
+  var shouldHideSymbol = regexes.map(
+    (regex) => { 
+      var symbolName = symbol.name;
+      return symbolName.match(regex) 
+    } 
+  ).reduce( (isHidden, result) => {
+    if(isHidden) { return isHidden };
+    if(result) {
+      return true;
+    } else {
+      return false; 
+    }
+  });
+
+
   return shouldHideSymbol
 }
 
