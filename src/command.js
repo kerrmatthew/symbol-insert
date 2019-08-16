@@ -2,6 +2,7 @@ import BrowserWindow from 'sketch-module-web-view';
 import { getWebview } from 'sketch-module-web-view/remote';
 import UI from 'sketch/ui';
 import Sketch from 'sketch/dom';
+import { isNull } from 'util';
 
 const webviewIdentifier = 'symbol-insert.webview';
 var librarySymbols;
@@ -104,7 +105,22 @@ function getSymbols() {
       });
     }
   });
+
+  symbolItems = removeSymbols(symbolItems); 
+
   return symbolItems;
+}
+
+function removeSymbols(symbols) {
+  var filteredSymbols = symbols.filter( (symbol) =>  { return hideSymbol(symbol) });
+  return filteredSymbols
+}
+
+function hideSymbol(symbol) {
+  var regex = /x\.\snested/g;
+  var symbolName = symbol.name;
+  var shouldHideSymbol = symbolName.match(regex) === null;
+  return shouldHideSymbol
 }
 
 function getLocalSymbols(document) {
