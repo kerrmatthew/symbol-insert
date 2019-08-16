@@ -134,8 +134,7 @@ function hideSymbol(symbol) {
       return false; 
     }
   });
-
-
+  
   return shouldHideSymbol
 }
 
