@@ -34,6 +34,28 @@ body {
   flex-direction: column;
 }
 
+.footer {   
+  right: 0px;
+  position: absolute;
+  height: 100%;
+}
+
+#settingsContainer {
+  height: 100vh; 
+  transition: all 150 cubic-bezier(0.075, 0.82, 0.165, 1);
+  overflow: scroll;
+}
+
+#settingsContainer.hide {
+  height: 0; 
+}
+
+.footer a {
+  font-size: 11px;
+  color: #D4D9D9;
+  margin: 4px;
+}
+
 input, textarea {
   -webkit-user-select: auto;
   user-select: auto;

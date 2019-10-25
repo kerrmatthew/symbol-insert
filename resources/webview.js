@@ -8,6 +8,11 @@ base.addEventListener('click', function(event) {
   }
 });
 
+document.getElementById("settingsButton").addEventListener("click", ()=> {
+
+  window.toggleSettings = 
+});
+
 document.getElementById('symbolButton').addEventListener('click', () => {
   window.postMessage('getSymbols');
 });

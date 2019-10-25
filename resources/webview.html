@@ -6,7 +6,6 @@
   <link rel="stylesheet" href="./style.css">
   <script>
     var currentFocus = -1;
-
     function resetList(){
       currentFocus = -1;
       var ul = document.getElementById("symbols");
@@ -48,6 +47,17 @@
       console.log('Filter: ', filter, filter, filterArray);
       const regex = new RegExp(filter, 'i');
       return text.match(regex) ? true : false;
+    }
+
+    function toggleSettings(e) {
+      var settingsContainer; 
+      settingsContainer = document.getElementById('settingsContainer');
+
+      if ( !!!settingsContainer.classList.contains("hide") ) {
+        settingsContainer.classList.remove("hide");
+      } else {
+        settingsContainer.classList.add("hide");
+      }
     }
 
     function filterSymbols(e) {
@@ -99,6 +109,10 @@
 </head>
 <body>
     <div class="container">
+
+      <div id="settingsContainer" class="hide">
+        THIS IS SETTINGS. 
+      </div>
       <div style="display: none">
         <button id="symbolButton">Get symbols</button>
       </div>
@@ -114,6 +128,11 @@
         spellcheck="false"
         readonly
         onfocus="this.removeAttribute('readonly');">
+        <div class="footer">
+          <button id="settingsButton">
+            settings
+          </button>
+        </div>
       <ul id="symbols"></ul>
     </div>
 

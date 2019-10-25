@@ -58,6 +58,10 @@ export default function () {
     insertSymbol(symbolId);
   });
 
+  webContents.on('showSettings'), () => {
+    console.log("toggle settings");
+  }
+
   //https://medium.com/madeawkward/how-to-create-floating-sketch-plugins-part-i-6241b82170d0
 
   browserWindow.loadURL(require('../resources/webview.html'))
@@ -120,7 +124,6 @@ function hideSymbol(symbol) {
   var regexes = [
     /x\.\snested/g,
     /x\.\s/g ];
-
   var shouldHideSymbol = regexes.map(
     (regex) => { 
       var symbolName = symbol.name;
